@@ -1,538 +1,815 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ecma Script</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-		    	                // <h> Variable in es6 (ecma script 2015) </h>
+      // <h> Variable in es6 (ecma script 2015) </h>
+
+      // declare variable using var
+
+      //   Syntax :
+      //   var variable_name;
+
+      //   // with the help of var Variable decleration process is make the variable global
+      //   console.log(a)
+      //   // The output will be (Undefine)
+      //   // Because the var decleration process memory is alloted but value is not assign
+
+      //   var a = 'first 1'
+      //   // in this decleration process memory allocated in compilation time but value become in execution time
+      //   console.log(a)
+
+      //     // Use variable a in block
+      // if(true){               // if block
+      //     console.log(a);     // Check the Variable (a) in block level
+      //     a = 'first 1.1';    // Change the value
+      //     var b = 'second 1'; // declare the variable (b) in block level
+      // }
+      // console.log(b);             // Variable can access from any where in block level or global level
+      // console.log(a);             // Variable (a) value changed
+      // b = 'second 1.1';           // Variable (b) value changed
+      // console.log(b);
+
+      //     // use variable a in function
+      // function fun(){
+      //     console.log(a);         // Global variable (a) can be access from anywhere
+      //     var c = 'third 1';      // declare a variable in function can only access in that particualr function
+      //     console.log(c);         // Variable (c) scope is only for this function
+      // }
+      // fun();
+      // console.log(c);             // Variable (c) is declared in function this is the reason it can't be acceess globaly
+
+      //         // Example of var declared variable
+      // for(var i=0; i<5; i++){
+      //     setTimeout(function(){
+      //         console.log(i);
+      //     }, 2000);
+      // }
+
+      // declare variable using let
+
+      //     // with the help of let Variable decleration process is make the variable global
+      // console.log(a)          // Because of the let decleration process memory and value is alloted already
+      //                         // it means the variable can't use before decleration
+      // let a = 'first 1';      // in this decleration there is memory and value both are aloted in compilation time
+      // console.log(a);
+
+      // // Use variable a in block
+      // if(true){               // if block
+      //     console.log(a);     // Check the Variable (a) in block level
+      //     a = 'first 1.1';    // Change the value
+      //     let b = 'second 1'; // declare the variable (b) in block level
+      // }
+      // console.log(b)          // block level variable decleration using let can't access outside of the block
+      // console.log(a);         // Variable (a) value changed
+      // b = 'second 1.1'        // Variable can't cange because let created variable is not accessable outside of the block
+      // console.log(b)
+
+      //     // use variable a in function
+      // function fun(){
+      //     console.log(a);         // Global variable (a) can be access from anywhere
+      //     let c = 'third 1';      // declare a variable in function can only access in that particualr function
+      //     console.log(c);         // Variable (c) scope is only for this function
+      // }
+      // fun();
+      // console.log(c);
+
+      //   // Lexical scoping
+      //   // Lexical scoping is a process in JS where the veriable is always search by compiler at block level
+      //   // Example:
+      //   const a = 5
+      //   const fun = () => {
+      //     const child = () => {
+      //       const superChild = () => {
+      //         console.log(a)					// In this case the compiler will check the variable in
+      //       }									// superChild function then child function then fun function then globaly
+      //       superChild()
+      //     }
+      //     child()
+      //   }
+      //   fun()
+
+      //         // Example of var declared variable
+      // for(let i=0; i<5; i++){
+      //     setTimeout(function(){
+      //         console.log(i);
+      //     }, 2000);
+      // }
+
+      // declare variable using const
+      //         // All the behaviour of the let variable is also contain const, but the only difference is that the value of const variable can't change
+      // const a = 'first 1';
+      // console.log(a);
+
+      // a = 'first 1.1';                // As per behaviour of the constant variable the value can't change
+      // console(a);                     // This is the reason the output through an
+
+      //             // Use of const variable in object
+      //         // In the case of object the value of the object can be change but whole object can't be change
+      // const b = {'name': 'rahul', 'age': 45};
+      // console.log(b.name);                // print object value
+      // b.name = 'ravi';                    // the value of the const variable can be change via object property
+      // console.log(b.name);
+
+      // b = {'name': 'ravi', 'age': 45};    // change the value of whole variable
+      // console.log(b.name)                 // Finaly the result through an error
+
+      // Template literals
+
+      //             // Template literals is also known as (Template string)
+
+      // let a = 'Hello';
+      // let b = 'World';
+      // console.log(a + ' ' + b);        // Old method
+      // console.log(`${a} ${b}`);       // New method in es6
+      // console.log(`${a}
+      // ${b}`);       // for new line just break the line of the templates
+
+      // es6 String method
+
+      // let a = 'Hello';
+      // console.log(`${a}`.startsWith('H'));    // Check if first char of string is H
+      // console.log(`${a}`.endsWith('O'));    // Check if last char of string is O (case sensitive)
+      // console.log(`${a}`.includes('llo'));    // Check if char exist in string or not
+      // console.log(`${a} `.repeat(10));    // Repeat the value
+
+      // Array Destructuring in es6
+
+      // const a = ['js', 'python', 'c', 'c#'];
+      // // // ----- Old Method for take value form the array ------
+      // // var first = a[0];
+      // // var second = a[1];
+      // // var third = a[2];
+      // // var fourth = a[3];
+      // // console.log(first, second, third, fourth)
+
+      // // // ----- New method (Array destructuring) to get value frm the es6 array -----
+      // // let [first, second, third, fourth] = a;
+      // // console.log(second);
+
+      // // // ----- Find only first and last value of array -----
+      // // console.log(a.length);
+      // // let [top1,,,toplast] = a;
+      // // console.log(top1, toplast);
 
+      // // ----- Swap value of two variable -----
+      // let b = 'Hello';
+      // let c = 'world';
+      // [b, c] = [c, b];
+      // console.log(b, c);
+
+      //   //   cloning the array
 
-		        // declare variable using var
-
-		//     // with the help of var Variable decleration process is make the variable global
-		// console.log(a)          // Because of the var decleration process memory is alloted but value is not assign
-		//                         // This is the Reasion the output is become (Undefine)
-		// var a = 'first 1';      // in this decleration there is memory alot in compilation time but value become in execution time
-		// console.log(a);
-
-		//     // Use variable a in block
-		// if(true){               // if block
-		//     console.log(a);     // Check the Variable (a) in block level
-		//     a = 'first 1.1';    // Change the value
-		//     var b = 'second 1'; // declare the variable (b) in block level
-		// }
-		// console.log(b);             // Variable can access from any where in block level or global level
-		// console.log(a);             // Variable (a) value changed
-		// b = 'second 1.1';           // Variable (b) value changed
-		// console.log(b);
-
-		//     // use variable a in function
-		// function fun(){
-		//     console.log(a);         // Global variable (a) can be access from anywhere
-		//     var c = 'third 1';      // declare a variable in function can only access in that particualr function
-		//     console.log(c);         // Variable (c) scope is only for this function
-		// }
-		// fun();
-		// console.log(c);             // Variable (c) is declared in function this is the reason it can't be acceess globaly
-
-		//         // Example of var declared variable
-		// for(var i=0; i<5; i++){
-		//     setTimeout(function(){
-		//         console.log(i);
-		//     }, 2000);
-		// }
-
-
-
-
-
-		            // declare variable using let
-
-		//     // with the help of let Variable decleration process is make the variable global
-		// console.log(a)          // Because of the let decleration process memory and value is alloted already
-		//                         // it means the variable can't use before decleration
-		// let a = 'first 1';      // in this decleration there is memory and value both are aloted in compilation time
-		// console.log(a);
-
-		// // Use variable a in block
-		// if(true){               // if block
-		//     console.log(a);     // Check the Variable (a) in block level
-		//     a = 'first 1.1';    // Change the value
-		//     let b = 'second 1'; // declare the variable (b) in block level
-		// }
-		// console.log(b)          // block level variable decleration using let can't access outside of the block
-		// console.log(a);         // Variable (a) value changed
-		// b = 'second 1.1'        // Variable can't cange because let created variable is not accessable outside of the block
-		// console.log(b)
-
-		//     // use variable a in function
-		// function fun(){
-		//     console.log(a);         // Global variable (a) can be access from anywhere
-		//     let c = 'third 1';      // declare a variable in function can only access in that particualr function
-		//     console.log(c);         // Variable (c) scope is only for this function
-		// }
-		// fun();
-		// console.log(c);
-
-		//         // Example of var declared variable
-		// for(let i=0; i<5; i++){
-		//     setTimeout(function(){
-		//         console.log(i);
-		//     }, 2000);
-		// }
-
-
-
-
-
-		            // declare variable using const
-		//         // All the behaviour of the let variable is also contain const, but the only difference is that the value of const variable can't change
-		// const a = 'first 1';
-		// console.log(a);
-
-		// a = 'first 1.1';                // As per behaviour of the constant variable the value can't change
-		// console(a);                     // This is the reason the output through an 
-
-
-		//             // Use of const variable in object
-		//         // In the case of object the value of the object can be change but whole object can't be change
-		// const b = {'name': 'rahul', 'age': 45};
-		// console.log(b.name);                // print object value
-		// b.name = 'ravi';                    // the value of the const variable can be change via object property
-		// console.log(b.name);
-
-		// b = {'name': 'ravi', 'age': 45};    // change the value of whole variable
-		// console.log(b.name)                 // Finaly the result through an error
-
-
-
-
-
-		                        // Template literals
-
-		//             // Template literals is also known as (Template string)
-
-		// let a = 'Hello';
-		// let b = 'World';
-		// console.log(a + ' ' + b);        // Old method
-		// console.log(`${a} ${b}`);       // New method in es6
-		// console.log(`${a}
-		// ${b}`);       // for new line just break the line of the templates
-
-
-
-
-
-		                        // es6 String method
-		             
-		// let a = 'Hello';
-		// console.log(`${a}`.startsWith('H'));    // Check if first char of string is H
-		// console.log(`${a}`.endsWith('O'));    // Check if last char of string is O (case sensitive)
-		// console.log(`${a}`.includes('llo'));    // Check if char exist in string or not
-		// console.log(`${a} `.repeat(10));    // Repeat the value
-
-
-
-
-
-		                        // Array Destructuring in es6
-
-		// const a = ['js', 'python', 'c', 'c#'];
-		// // // ----- Old Method for take value form the array ------
-		// // var first = a[0];
-		// // var second = a[1];
-		// // var third = a[2];
-		// // var fourth = a[3];
-		// // console.log(first, second, third, fourth)
-
-		// // // ----- New method to get value frm the es6 array -----
-		// // let [first, second, third, fourth] = a;
-		// // console.log(second);
-
-		// // // ----- Find only first and last value of array -----
-		// // console.log(a.length);
-		// // let [top1,,,toplast] = a;
-		// // console.log(top1, toplast);
-
-		// // ----- Swap value of two variable -----
-		// let b = 'Hello';
-		// let c = 'world';
-		// [b, c] = [c, b];
-		// console.log(b, c);
-
-
-
-
-
-		                        // Object destructuring in es6
-		                    
-		// const a = {'name': 'Rahul', 'age': 24, 'father': 'Dhruv'};
-		// console.log(a.father);
-
-		// // ----- Assign the value of the object in variables -----
-		// // let name, age, father;
-		// // ({name, age, father} = a);
-		// // console.log(name, age, father);
-
-		// // // ..... OR .....
-		// // let {name, age, father} = a;
-		// // console.log(name, age, father);
-
-		// // // ..... OR .....
-		// // let {name:myName, age:myAge, father:myFather} = a;
-		// // console.log(myName, myAge, myFather);
-
-		// // ----- Object in object -----
-		// b = {'name': 'Kishan', 'age': 24, 'father': {'name': 'Sahil', 'age': 56}};
-		// console.log(`My name is ${b.name} and my Father name is ${b.father.name}`);
-
-
-
-
-
-		                        // Fat Arrow Functions in es6
-
-		// // ----- es5 process -----
-		// var sum = function(){
-		//         var a = 5;
-		//         var b = 8;
-		//         return a+b;
-		// }
-		// console.log(sum());
-
-		// ----- es6 process -----
-		// let sum = () => {
-		//         let a = 5;
-		//         let b = 34;
-		//         return a+b;
-		// }
-		// console.log(sum());
-		// // ..... OR .....
-		// let a = 5;
-		// let b = 34;
-		// let sum = () => {return a+b}
-		// console.log(sum());
-		// // ..... OR .....
-		// let [a, b] = [45, 78];
-		// let sum = () => a+b;    // if there is only one line of code then we can write it without return keyword
-		// console.log(sum());
-
-
-
-
-
-								// Default parameter in es6
-
-		// ----- es5 process -----
-		// function mult(c, d){
-		// 	console.log(c*d);			// in this case we find an NaN value, Because there is first argument is passed
-		// }								// But the second number is undefined and whenn undefined variable is multiplied with a number it returned NaN
-		// mult(5);
-		// // ..... to solve this problem in es5 .....
-		// function mult(a,b){
-		// 	if (typeof b == 'undefined'){
-		// 		b=1;
-		// 	}
-		// 	console.log(a*b);
-		// }
-		// mult(5)
-		// // ..... OR .....
-		// function mult(a, b=4, c=8){			// Default parameter
-		// 	console.log(a*b*c);
-		// }
-		// mult(5);
-
-		// // ----- es6 -----
-		// let mult = (a, b=4) => {console.log(`multiplication of the ${a} and ${b} = ${a*b}`)}
-		// mult(5)
-
-
-
-
-
-								// Rest parameter in es6
-
-		// Rest paameter is an improved way to handle function parameter, allowing us to more easily handle
-		// various input as parameters in a function. The rest parameter syntax allows us to represent an indefine
-		// number of arguments as an array.
-
-		// // ----- es5 process -----
-		// function sum(a, b){
-		// 	console.log(a+b);
-		// }
-		// sum(3, 7, 1, 9);
-
-		// // ----- es6 process -----
-		// let sum = (...inpt) => {
-		// 	console.log(inpt);				// Output is in array format
-		// 	console.log(...inpt);			// Output is in value format
-		// 	let totl = 0;
-		// 	for (let i of inpt){
-		// 		totl += i;
-		// 	}
-		// 	console.log(`Sum of total numbers is = ${totl}`);
-		// }
-		// sum(4, 2, 9, 1, 5)
-
-		// // ..... OR .....
-		// let fun = (a, b, ...inpt) => {
-		// 	console.log(`first Argument is = ${a}
-		// 	second Argumant is = ${b}`);
-		// 	console.log(inpt);
-		// 	console.log(inpt[0]);
-		// 	console.log(inpt.length);
-		// 	console.log(inpt.indexOf('c#'));
-		// }
-		// fun('js', 'css', 'html', 'java', 'c#', 'python', 'ajax');
-
-
-
-
-
-								// Spres operator in es6
-							
-		// Spred operator allows an iterable to expand in place where 0+ arguments are expected.
-		// It is mostly used in varriable array where there is more than 1 values are expected.
-		// It allows us the privilege to obtain a list of parameters from an array.
-		// Syntax of Spread operator is same as Rest parameter but it works completely opposite of it.
-
-		// // ----- es5 process -----
-		// function sum(a, b, c){
-		// 	console.log(a+b+c);
-		// }
-		// var arrVal = [4, 7, 6];
-		// sum.apply(null, arrVal);
-
-		// // ----- es6 process -----
-		// function sum(a, b, c){
-		// 	console.log(a+b+c);
-		// }
-		// var arrVal = [4, 7, 6];
-		// sum(...arrVal);
-
-		// // ..... OR .....
-		// let [arr1, arr2] = [[1, 2, 3], [4, 5, 6]];
-		// arr1 = arr1.concat(arr2);
-		// console.log(arr1);
-
-		// ..... OR .....
-		// let [arr1, arr2, arr3] = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-		// arr1 = [...arr1, ...arr2, ...arr3];
-		// console.log(arr1);
-
-
-
-
-
-								// Mathe object in es6
-
-		// // ----- Find sign (+ve or -ve) of the variable
-		// let a = 5.55;
-		// console.log(Math.sign(a));
-		// // ..... OR .....
-		// let b = -5.55;
-		// console.log(Math.sign(b));
-		// // ..... OR .....
-		// let c = 0;
-		// console.log(Math.sign(c));
-		// // ..... OR .....
-		// let d = -0;
-		// console.log(Math.sign(d));
-		// // ..... OR .....
-		// let e = 'Name';
-		// console.log(Math.sign(e));
-		// // ..... OR .....
-		// let f = -3.953;
-		// console.log(Math.trunc(f));
-		// // ..... OR .....
-		// let g = 3.953;
-		// console.log(Math.floor(g));				// Find the minimum integer value
-
-
-
-
-
-								// exponentiation Operator (**) in es6
-
-		// Exponentiation Operator (**) raises the first operator to the power of the second operator.
-		// let [a, b] = [5, 2];
-		// console.log(a**b);
-		// // ..... OR .....
-		// console.log(Math.pow(a, b));
-
-
-
-
-
-								// Number & Global methods in es6
-							
-		// // ----- isFinite() Method -----
-		// // The global isFinite() method returns false if the argument is Infinity or NaN
-		// let a = 5;
-		// console.log(isFinite(a))
-		// // ..... OR .....
-		// let b = 5**234253435;
-		// console.log(isFinite(b))
-		// // ..... OR .....
-		// let c = 'Name';
-		// console.log(Number.isFinite(c))
-
-
-		// // The isNaN() Method 
-		// // The global isNaN() method returns true if the argument is NaN, Othervise it returns false
-		// let a = 5;
-		// console.log(isNaN(a));
-		// // ..... OR .....
-		// let b = '-5';
-		// console.log(isNaN(b));
-		// // ..... OR .....
-		// let c = 'djfgk';
-		// console.log(isNaN(c));
-		// // ..... OR .....
-		// let d = 'flas';
-		// console.log(Number.isNaN(d));
-
-
-		// // The Number.isInteger() Method
-		// // The Number.isInteger() Method returns true if the argument is an integer
-		// let a = 45;
-		// console.log(Number.isInteger(a));
-		// // ..... OR .....
-		// let b = 4.5;
-		// console.log(Number.isInteger(b));
-
-
-
-
-
-								// OOPS in es6
-
-		// In programming languages we offen say 'An object is an instance of a class'.
-		// This means that, using a class, We can create many objects and they all share methods and properties.
-
-		// ----- Inheritance in es6 -----
-		// Since object can be enhanced, there are many ways to create objects sharing methods and properties.
-		// But we want the simplest one.
-
-		// class std{
-		// 	constructor(std_name, std_age, std_class){
-		// 		this.name = std_name;
-		// 		this.std_age = std_age;
-		// 		this.cls = std_class;
-		// 	}
-		// 	bio(){
-		// 		console.log(`The name of the Student = ${this.name}, Age = ${this.std_age}, class = ${this.cls}`);
-		// 	}
-		// }
-
-		// let obj1 = new std('Rahul', 23, '12th');
-		// let obj2 = new std('Mothit', 17, '8th');
-
-		// obj1.bio();
-		// obj2.bio();
-
-		// // ----- parent calss inharit in chield class -----
-		// class std{
-		// 	constructor(std_nam, std_age, std_cls){
-		// 		[this.name, this.age, this.cls] = [std_nam, std_age, std_cls]
-		// 	}
-		// 	bio(){
-		// 		return `Name of the Student is = ${this.name}, Age = ${this.age}, Class = ${this.cls}`;
-		// 	}
-		// }
-		// class player extends std{
-		// 	constructor(std_nam, std_age, std_cls, std_game){
-		// 		super(std_nam, std_age, std_cls);
-		// 		this.game = std_game;
-		// 	}
-		// 	bio(){
-		// 		return `${super.bio()}, Game = ${this.game}`
-		// 	}
-		// }
-
-		// let obj1 = new std('Rahul', 23, '12th');
-		// let obj2 = new player('Dinesh', 12, '4th', 'football');
-		// console.log(obj1.bio());
-		// console.log(obj2.bio());
-
-
-
-
-
-		// ############################################# Advance Js ######################################################
-
-
-
-
-
-		// ********** part 1 **********
-
-		// ----- How js Works ------
-		// JS Code ---> JS engine (V8, etc.) ---> parser ---> AST (Abastract Syntax Tree) ---> Machine Code ---> Run Code
-
-
-
-
-		// ********** Part 2 **********
-
-		// ----- Execution Contaxt
-		// The environment in which our code is Executed and is evaluated is known as execution context
-		// ----- Global execution Context (default execution context) -----
-		// JS engine creates the global execution context before it starts to execute any code
-		// All the variables and functions that is not inside any function is always define in global execution context
-		// A new execution context gets created every time a function is executed
-		// => The global execution context just like any other execution context, except that it gets created
-		// by default. It is associated with Global Object. Which means a window object.
-		// Ex. this === window, name == window.name
-
-		// ----- Execution Stack -----
-		// The Execution stack (also known as 'Calling Stack') is a Stack with a LIFO (Last in First Out) Structure,
-		// which is used to store all the execution context created during the code execution
-
-
-
-
-
-		// ********** Part 3 **********
-
-		// // Example --->
-		// function a(){
-		//         console.log('This is the First Step');
-		//         debugger;
-		//         b();
-		//         debugger;
-		//         console.log('This is the Fifth Step');
-		// }
-		// function b(){
-		//         debugger;
-		//         console.log('This is the Second Step');
-		//         c();
-		//         debugger;
-		//         console.log('This is the Fourth Step');
-		// }
-		// function c(){
-		//         debugger;
-		//         console.log('This is the Third Step');
-		// }
-
-		// debugger;
-		// a();
-
-
-
-
-		// ********** Part 4 **********
-
-		// ----- Creation Phase -----
-		// ..... Variable Object .....
-		// => For each function (Function Declerations) a property is created in the variable Object.
-		// Which is pointing to the function.
-		// => For each variable (Variable declerations) a property is created in the variable Object.
-		// Which is then set to undefined.
-		// => Argument Objects are created that were passed into the function.
+      //   a = [1, 2, 3, 4, 5]
+      //   b = a
+      //   c = b.slice()
+      // OR
+      // d = [...b]
+      //   a.pop()
+
+      //   console.log(a)
+      //   console.log(b)
+      //   console.log(c)
+
+      //   //   set in the Array
+      //   //   Set can not be access by index
+      //   // Set is iterable
+      //   // Set never content repetative value
+      //   // Set is not orderd
+      //   // syntax:
+      //   // variable_type variable = new Set(array)
+
+      //   a = new Set([1, 2, 3, 4, 4])
+      //   console.log(a)
+      //   console.log(a.has(3))
+
+      // Object destructuring in es6
+
+      // const a = {'name': 'Rahul', 'age': 24, 'father': 'Dhruv'};
+      // console.log(a.father);
+
+      // // ----- Assign the value of the object in variables -----
+      // // let name, age, father;
+      // // ({name, age, father} = a);
+      // // console.log(name, age, father);
+
+      // // // ..... OR .....
+      // // let {name, age, father} = a;
+      // // console.log(name, age, father);
+
+      // // // ..... OR .....
+      // // let {name:myName, age:myAge, father:myFather} = a;
+      // // console.log(myName, myAge, myFather);
+
+      // // ----- Object in object -----
+      // b = {'name': 'Kishan', 'age': 24, 'father': {'name': 'Sahil', 'age': 56}};
+      // console.log(`My name is ${b.name} and my Father name is ${b.father.name}`);
+
+      //   Map / Object literal
+
+      // //   Normal object
+      //   a = { 1: 'a', a: 1 }				// There is the key always consider in string
+      //   console.log(a)
+
+      //   // map object
+
+      //   a = new Map()
+      //   a.set('a', 1)
+      //   a.set('b', 2)
+      //   a.set(1, 2) // in Map object the key can be number
+      //   a.set([1, 2, 3], 2) // in Map object the key can be array
+      //   console.log(a)
+
+      //   //   Access values of map object
+      //   //   console.log(a.get(1))
+      //   //   console.log(a.keys())
+
+      //   //   iterate the Map object
+      //   for (i of a) console.log(i)
+      //   for ([key, val] of a) console.log(`Key is ${key} & value is ${val}`)
+
+      //   // convert Object to Map
+      //   b = { a: 1, b: 2, c: 3, d: 4 }
+
+      //   a = new Map(Object.entries(b))
+
+      //   console.log(a)
+      //   console.log(b)
+
+      //   // Clone object
+      //   a = { a: 1, b: 2, c: 3, d: 4 }
+
+      //   b = { ...a }
+      //   // OR
+      //   c = Object.assign({}, a)
+
+      // // Optional chaining
+      // // Optional chaining in object is used to check if the key exist or not
+      // // and if key is not exist then show result as undefined
+      // // Syntax
+      // // obj?.key?.subkey
+
+      // a = { a: 1, b: 2, c: { a: 1, b: 2, c: 3 }, d: 4, e: 5 }
+
+      // console.log(a.a) // Show 1 as result
+      // console.log(a.c.c) // Show 3 as result
+      // console.log(a.c.c.c) // Show undefine as result
+      // console.log(a.c.c.c?.c) // Show error as result     // this process is not send interpreter to forword if key not exists
+
+      // // To fixed the issue we can make it as like
+      // console.log(a.c.c?.c)
+
+      // Fat Arrow Functions in es6
+
+      // // ----- es5 process -----
+      // var sum = function(){
+      //         var a = 5;
+      //         var b = 8;
+      //         return a+b;
+      // }
+      // console.log(sum());
+
+      // ----- es6 process -----
+      // let sum = () => {
+      //         let a = 5;
+      //         let b = 34;
+      //         return a+b;
+      // }
+      // console.log(sum());
+      // // ..... OR .....
+      // let a = 5;
+      // let b = 34;
+      // let sum = () => {return a+b}
+      // console.log(sum());
+      // // ..... OR .....
+      // let [a, b] = [45, 78];
+      // let sum = () => a+b;    // if there is only one line of code then we can write it without return keyword
+      // console.log(sum());
+
+      // Default parameter in es6
+
+      // ----- es5 process -----
+      // function mult(c, d){
+      // 	console.log(c*d);			// in this case we find an NaN value, Because there is first argument is passed
+      // }								// But the second number is undefined and whenn undefined variable is multiplied with a number it returned NaN
+      // mult(5);
+      // // ..... to solve this problem in es5 .....
+      // function mult(a,b){
+      // 	if (typeof b == 'undefined'){
+      // 		b=1;
+      // 	}
+      // 	console.log(a*b);
+      // }
+      // mult(5)
+      // // ..... OR .....
+      // function mult(a, b=4, c=8){			// Default parameter
+      // 	console.log(a*b*c);
+      // }
+      // mult(5);
+
+      // // ----- es6 -----
+      // let mult = (a, b=4) => {console.log(`multiplication of the ${a} and ${b} = ${a*b}`)}
+      // mult(5)
+
+      //   // Callback function / Hieghly order function
+      //   // When a function is passed as argument in other function then this process is known as callback function
+
+      //   const fun1 = () => {
+      //     console.log('Hello kaun')
+      //   }
+
+      //   const fun2 = param => {
+      //     param()
+      //     console.log('Hum bol rhe hai')
+      //   }
+
+      //   fun2(fun1)
+
+      // Rest parameter in es6
+
+      // Rest paameter is an improved way to handle function parameter, allowing us to more easily handle
+      // various input as parameters in a function. The rest parameter syntax allows us to represent an indefine
+      // number of arguments as an array.
+
+      // // ----- es5 process -----
+      // function sum(a, b){
+      // 	console.log(a+b);
+      // }
+      // sum(3, 7, 1, 9);
+
+      // // ----- es6 process -----
+      // let sum = (...inpt) => {
+      // 	console.log(inpt);				// Output is in array format
+      // 	console.log(...inpt);			// Output is in value format
+      // 	let totl = 0;
+      // 	for (let i of inpt){
+      // 		totl += i;
+      // 	}
+      // 	console.log(`Sum of total numbers is = ${totl}`);
+      // }
+      // sum(4, 2, 9, 1, 5)
+
+      // // ..... OR .....
+      //   let fun = (a, b, ...inpt) => {
+      //     console.log(`first Argument is = ${a} and second Argumant is = ${b}`)
+      //     console.log(inpt)
+      //     console.log(inpt[0])
+      //     console.log(inpt.length)
+      //     console.log(inpt.indexOf('c#'))
+      //   }
+      //   fun('js', 'css', 'html', 'java', 'c#', 'python', 'ajax')
+
+      // Spred operator in es6
+
+      // Spred operator allows an iterable to expand in place where 0+ arguments are expected.
+      // It is mostly used in varriable array where there is more than 1 values are expected.
+      // It allows us the privilege to obtain a list of parameters from an array.
+      // Syntax of Spread operator is same as Rest parameter but it works completely opposite of it.
+
+      // // ----- es5 process -----
+      // function sum(a, b, c){
+      // 	console.log(a+b+c);
+      // }
+      // var arrVal = [4, 7, 6];
+      // sum.apply(null, arrVal);
+
+      // // ----- es6 process -----
+      // function sum(a, b, c){
+      // 	console.log(a+b+c);
+      // }
+      // var arrVal = [4, 7, 6];
+      // sum(...arrVal);
+
+      // // ..... OR .....
+      // let [arr1, arr2] = [[1, 2, 3], [4, 5, 6]];
+      // arr1 = arr1.concat(arr2);
+      // console.log(arr1);
+
+      // ..... OR .....
+      // let [arr1, arr2, arr3] = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+      // arr1 = [...arr1, ...arr2, ...arr3];
+      // console.log(arr1);
+
+      // Math object in es6
+
+      // // ----- Find sign (+ve or -ve) of the variable
+      // let a = 5.55;
+      // console.log(Math.sign(a));
+      // // ..... OR .....
+      // let b = -5.55;
+      // console.log(Math.sign(b));
+      // // ..... OR .....
+      // let c = 0;
+      // console.log(Math.sign(c));
+      // // ..... OR .....
+      // let d = -0;
+      // console.log(Math.sign(d));
+      // // ..... OR .....
+      // let e = 'Name';
+      // console.log(Math.sign(e));
+      // // ..... OR .....
+      // let f = -3.953;
+      // console.log(Math.trunc(f));
+      // // ..... OR .....
+      // let g = 3.953;
+      // console.log(Math.floor(g));				// Find the minimum integer value
+
+      // exponentiation Operator (**) in es6
+
+      // Exponentiation Operator (**) raises the first operator to the power of the second operator.
+      // let [a, b] = [5, 2];
+      // console.log(a**b);
+      // // ..... OR .....
+      // console.log(Math.pow(a, b));
+
+      // Number & Global methods in es6
+
+      // // ----- isFinite() Method -----
+      // // The global isFinite() method returns false if the argument is Infinity or NaN
+      // let a = 5;
+      // console.log(isFinite(a))
+      // // ..... OR .....
+      // let b = 5**234253435;
+      // console.log(isFinite(b))
+      // // ..... OR .....
+      // let c = 'Name';
+      // console.log(Number.isFinite(c))
+
+      // // The isNaN() Method
+      // // The global isNaN() method returns true if the argument is NaN, Othervise it returns false
+      // let a = 5;
+      // console.log(isNaN(a));
+      // // ..... OR .....
+      // let b = '-5';
+      // console.log(isNaN(b));
+      // // ..... OR .....
+      // let c = 'djfgk';
+      // console.log(isNaN(c));
+      // // ..... OR .....
+      // let d = 'flas';
+      // console.log(Number.isNaN(d));
+
+      // // The Number.isInteger() Method
+      // // The Number.isInteger() Method returns true if the argument is an integer
+      // let a = 45;
+      // console.log(Number.isInteger(a));
+      // // ..... OR .....
+      // let b = 4.5;
+      // console.log(Number.isInteger(b));
+
+      // OOPS in es6
+
+      // In programming languages we offen say 'An object is an instance of a class'.
+      // This means that, using a class, We can create many objects and they all share methods and properties.
+
+      // ----- Inheritance in es6 -----
+      // Since object can be enhanced, there are many ways to create objects sharing methods and properties.
+      // But we want the simplest one.
+
+      // class std{
+      // 	constructor(std_name, std_age, std_class){
+      // 		this.name = std_name;
+      // 		this.std_age = std_age;
+      // 		this.cls = std_class;
+      // 	}
+      // 	bio(){
+      // 		console.log(`The name of the Student = ${this.name}, Age = ${this.std_age}, class = ${this.cls}`);
+      // 	}
+      // }
+
+      // let obj1 = new std('Rahul', 23, '12th');
+      // let obj2 = new std('Mothit', 17, '8th');
+
+      // obj1.bio();
+      // obj2.bio();
+
+      // // ----- parent calss inharit in child class -----
+      // class std{
+      // 	constructor(std_nam, std_age, std_cls){
+      // 		[this.name, this.age, this.cls] = [std_nam, std_age, std_cls]
+      // 	}
+      // 	bio(){
+      // 		return `Name of the Student is = ${this.name}, Age = ${this.age}, Class = ${this.cls}`;
+      // 	}
+      // }
+      // class player extends std{
+      // 	constructor(std_nam, std_age, std_cls, std_game){
+      // 		super(std_nam, std_age, std_cls);
+      // 		this.game = std_game;
+      // 	}
+      // 	bio(){
+      // 		return `${super.bio()}, Game = ${this.game}`
+      // 	}
+      // }
+
+      // let obj1 = new std('Rahul', 23, '12th');
+      // let obj2 = new player('Dinesh', 12, '4th', 'football');
+      // console.log(obj1.bio());
+      // console.log(obj2.bio());
+
+      //   // forEach method
+
+      //   a = [1, 2, 3, 4, 5]
+
+      //   a.forEach((val, ind) => {
+      //     console.log(`value ${val} is at index ${ind}`)
+      //   })
+
+      //   //   map method
+
+      //   a = [1, 2, 3, 4, 5]
+
+      //   a.map((val, ind) => {
+      //     console.log(val * ind)
+      //   })
+
+      //   //   filter method
+      //   a = [1, 2, 3, 4, 5]
+
+      //   const greater = num => {
+      //     return num > 3
+      //   }
+      //   console.log(a.filter(greater))
+
+      //   // Reduce method
+      //   // // Syntax:
+      //   // array.reduce((accumulator, current_val) => {
+      //   // 	// action
+      //   // })
+
+      //   a = [1, 2, 3, 4, 5]
+
+      //   const sum = a.reduce((acc, cur) => {
+      //     return acc + cur
+      //   })
+
+      //   console.log(sum)
+
+      //   //   sort method
+      //   // Sort method is used to sort the arravalues in assending or descending order
+      //   // This method is always take array value in string format
+      //   // Sort is always work As per ASCII value
+      //   //   ** This method is change the actual array
+
+      //   a = [34, 1200, 45, 92, 2, 17]
+      //   a.sort()
+      //   console.log(a)
+
+      //   a.sort((first, second) => first - second)
+      //   console.log(a)
+
+      //   //   Find method
+
+      //   Syntax
+      // array.find(value => action)
+      //   a = ['Lion', 'Cow', 'Gillu', 'Doggyi', 'Cat']
+
+      //   console.log(a.find(val => val.length === 5))
+
+      //   //   Every method
+      //   Every method is used to return true if all values condition matched else return false
+      //   a = [1, 2, 3, 4, 5]
+      //   b = [2, 4, 6, 8, 10]
+
+      //   console.log(a.every(val => val % 2 === 0))			// return false
+      //   console.log(b.every(val => val % 2 === 0))			// return true
+
+      //   // Some method
+      //   //   This method in array is used to check if any value is matched with condition
+      //   a = [1, 2, 3, 4, 5, 6]
+      //   console.log(a.some(val => val % 2 === 0))
+
+      //   //   Fill method
+      //   // fill method is used to generate the new array with given value
+
+      //   const a = new Array(10) // This process is used to generate a new array with 10 empty value
+      //   a.fill(2)
+      //   console.log(a)
+
+      //   OR
+
+      //   // Syntax:
+      //   // array.fill(fill_value, start_index, end_index)
+      //   a = [1, 2, 3, 4, 5, 6, 7]
+      //   a.fill(3, 1, 5)
+      //   console.log(a)				// Return [1, 3, 3, 3, 3, 5, 6, 7]
+
+      //   //   splice method
+      //   // Use to delete or insert the values from array
+      //   // The deleted value will return by this method
+      //   //   syntax:
+      //   // a.splice(start_index, delete_count, insert_index)
+
+      //   a = [1, 2, 3, 4, 5, 6, 7]
+      //   b = a.slice()
+      //   d = a.splice(1, 4) // This process is delete the value from first index and delete 4 values
+      //   e = b.splice(1, 3, 9, 5) // This process is used to remove the value from first index and delete 3 values and then insert a value
+      //   console.log(a)
+      //   console.log(b)
+      //   console.log(d)
+      //   console.log(e)
+
+      //   //   Iterable
+      //   // The data type is called iterable which can be use for of loop
+      //   array, string, set
+
+      //   // Non iterable
+      //   number, object
+
+      //   //   array like object
+      //   // Those data type which have length property and can be acces by index
+      //   array, string
+
+      //   // not array like
+      //   number, object, set
+
+      //   Hoisting in js
+
+      //   // Function decleartion
+      //   funs()
+      //   function funs() {
+      //     console.log('Hello world')
+      //   }
+
+      //   //   Function expression
+      //   funs1()
+      //   const funs1 = () => console.log('Hello world')
+
+      // ***** Create own method ******
+      // The method is not worked with arrow functio
+
+      // const person = {
+      //   firstName: 'Harshit',
+      //   age: 8,
+      //   about: function () {
+      //     return `The person name is ${this.firstName} and the age is ${this.age}`
+      //   },
+      //   address: 'Varanasi'
+      // }
+
+      // console.log(person.about())
+
+      // // OR
+
+      // function personInfo() {
+      //   return `The person name is ${this.firstName} and the age is ${this.age}`
+      // }
+
+      // const person = {
+      //   firstName: 'Harshit',
+      //   age: 8,
+      //   about: personInfo,
+      //   address: 'Varanasi'
+      // }
+      // const person2 = {
+      //   firstName: 'Harshita',
+      //   age: 18,
+      //   about: personInfo,
+      //   address: 'Baranasi'
+      // }
+
+      // console.log(person2.about())
+
+      // // OR
+
+      // const person = {
+      //   firstName: 'Harshit',
+      //   age: 8,
+      //   about() {
+      //     return `The person name is ${this.firstName} and the age is ${this.age}`
+      //   },
+      //   address: 'Varanasi'
+      // }
+
+      // console.log(person.about())
+
+      // // this keyword in js
+      // // this keword is used in js to get the current object data
+      // // By default the current object is window
+      // // In function this keyword is not working with arrow function
+
+      // console.log(this) // This will show window object
+      // console.log(window)
+      // console.log(this === window)
+
+      // // Ex
+
+      // const a = () => console.log(this)
+
+      // function b() {
+      //   'use strict'                 // 'use strict' is disable this keyword for window object
+      //   console.log(this)
+      // }
+
+      // a()
+      // b()
+
+      // // call, apply and bind in js
+      // // call
+
+      // fun = () => console.log('Hello')
+      // fun()
+      // fun.call() // We can use call method to call any function.
+
+      // // OR
+
+      // person1 = {
+      //   fname: 'Abhay',
+      //   age: 15,
+      //   about: function (arg1, arg2) {
+      //     console.log(`Person name is ${this.fname} and age is ${this.age} \n the argument is ${arg1} and ${arg2}`)
+      //   }
+      // }
+
+      // person2 = {
+      //   fname: 'Ajeet',
+      //   age: 30
+      // }
+
+      // person1.about() // This is normal call for about
+      // person1.about.call() // In this case the call method is act as global
+      // person1.about.call(person2) // There person2 as argument using for this component
+      // person1.about.call(person2, 'Hello', 'Hi')
+
+      // // apply keword
+      // // apply keyword is used to call the object method but the parameter should [ass in array format]
+
+      // // person1.about.apply(person2, 'Hello', 'Hi')   // Error will show as result
+      // person1.about.apply(person2, ['Hello', 'Hi']) // Error will show as result
+
+      // // bind keyword
+      // // a = person1.about // object method assign in variable
+      // // a() // This will show undefined
+
+      // // Use as billow
+      // a = person1.about.bind(person1, 'Hi', 'Hello')
+      // a()
+      
+      // proto, prototype, class
+
+      
+
+      // ############################################# Advance Js ######################################################
+
+      // ********** part 1 **********
+
+      // ----- How js Works ------
+      // JS Code ---> JS engine (V8, etc.) ---> parser ---> AST (Abastract Syntax Tree) ---> Machine Code ---> Run Code
+
+      // ********** Part 2 **********
+
+      // ----- Execution Contaxt
+      // The environment in which our code is Executed and is evaluated is known as execution context
+      // ----- Global execution Context (default execution context) -----
+      // JS engine creates the global execution context before it starts to execute any code
+      // All the variables and functions that is not inside any function is always define in global execution context
+      // A new execution context gets created every time a function is executed
+      // => The global execution context just like any other execution context, except that it gets created
+      // by default. It is associated with Global Object. Which means a window object.
+      // Ex. this === window, name == window.name
+
+      // ----- Execution Stack -----
+      // The Execution stack (also known as 'Calling Stack') is a Stack with a LIFO (Last in First Out) Structure,
+      // which is used to store all the execution context created during the code execution
+
+      // ********** Part 3 **********
+
+      // // Example --->
+      // function a(){
+      //         console.log('This is the First Step');
+      //         debugger;
+      //         b();
+      //         debugger;
+      //         console.log('This is the Fifth Step');
+      // }
+      // function b(){
+      //         debugger;
+      //         console.log('This is the Second Step');
+      //         c();
+      //         debugger;
+      //         console.log('This is the Fourth Step');
+      // }
+      // function c(){
+      //         debugger;
+      //         console.log('This is the Third Step');
+      // }
+
+      // debugger;
+      // a();
+
+      // ********** Part 4 **********
+
+      // ----- Creation Phase -----
+      // ..... Variable Object .....
+      // => For each function (Function Declerations) a property is created in the variable Object.
+      // Which is pointing to the function.
+      // => For each variable (Variable declerations) a property is created in the variable Object.
+      // Which is then set to undefined.
+      // => Argument Objects are created that were passed into the function.
     </script>
-</body>
+  </body>
 </html>
