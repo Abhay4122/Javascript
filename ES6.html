@@ -748,10 +748,87 @@
       // // Use as billow
       // a = person1.about.bind(person1, 'Hi', 'Hello')
       // a()
-      
+
       // proto, prototype, class
 
-      
+      // // proto in js
+      // // proto is the origin refrence of an object
+
+      // a = { a: 1, b: 2, c: 3, d: 4 }
+
+      // console.log(a) // It will simply show the object
+      // console.log(a.__proto__) // It will show the origin/proto/[[prototype]] of the object
+
+      // // OR
+
+      // b = Object.create(a)
+
+      // console.log(b) // It will simply show an empty object. But it is hold the refrence of object a
+      // console.log(b.c) // It will simply show 3 as result, because it will search key c in its own object if not found then it will search on refrenced object
+      // console.log(b.__proto__) // It will show the origin/proto/[[prototype]] of the object
+
+      // // prototype in js
+      // // prototype is very different from proto/[[prototype]]
+      // // A prototype is a refrence, comes with new declared function
+      // // Or we can also say that a prototype is an object comes with new declared function
+      // // A function in js is always act as like an object
+      // // Prototype is only comes with function in js
+
+      // function a(arg) {
+      //   return `The argument is like ${arg}`
+      // } // Here a is a function
+
+      // a.prototype.fname = 'Hello' // here a function is act as an object
+      // a.prototype.about = { fname: 'Rahul', age: 23 }
+
+      // console.log(a())
+      // console.log(a.prototype)
+      // console.log(a.prototype.fname)
+      // console.log(a.prototype.about)
+
+      // // Create objcet using function
+
+      // function student(name, age) {
+      //   std = Object.create(student.prototype)
+
+      //   std.name = name
+      //   std.age = age
+
+      //   return std
+      // }
+
+      // student.prototype.about = function () {
+      //   return `The name of student is ${this.name} and the age of student is ${this.age}`
+      // }
+
+      // student.prototype.is18 = function () {
+      //   return this.age >= 18 ? 'Student can vote.' : 'Student can not vote'
+      // }
+
+      // console.log(student('Rahul', 120).is18())
+
+      // new keword in js
+      // A new keyword in js is used to create an empty object and then return the object
+      // Apart from the
+
+      function std(name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      std.prototype.about = function () {
+        return `The name of student is ${this.name} and the age of student is ${this.age}`
+      }
+
+      std.prototype.is18 = function () {
+        return this.age >= 18 ? 'Student can vote.' : 'Student can not vote'
+      }
+
+      student = new std('Harshit', 17)
+
+      console.log(student.name)
+      console.log(student.about())
+      console.log(student.is18())
 
       // ############################################# Advance Js ######################################################
 
